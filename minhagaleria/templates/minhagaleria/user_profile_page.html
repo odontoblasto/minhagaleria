@@ -1,0 +1,24 @@
+
+{% block content %}
+<h1> Seu Perfil</h1>
+
+{% if user.profilemodel.foto %}
+<div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+    <div class="col-md-4">
+        <img src="{{ user.profilemodel.foto.url }}" class="img-fluid rounded-start" alt="Imagem do Perfil">
+    </div>
+    <div class="col-md-8">
+        <div class="card-body">
+            <h5 class="card-title">{{user.profilemodel.name | upper}}</h5>
+            <p class="card-text">{{user.profilemodel.page}} <p> Data de Nascimento : {{user.profilemodel.data_nascimento}}</p>
+            <p> User_id: {{user.profilemodel.id}}</p> Username : {{user.username}} </p></p>
+            <p class="card-text"><small class="text-muted">Cadastro feito em : </small></p>
+        </div>
+    </div>
+    </div>
+</div>
+{% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,185 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria de Fotos</title>
+
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <style>
+        .image-thumbail {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .list-group-item a {
+            text-decoration: none;
+            color: black;
+        }
+    </style>
+</head>
+
+<body class="m-5">
+    <div class="container">
+      
+            <div class="md-3">
+                {% if request.user.is_authenticated %}
+                <p><strong>Olá , {{request.user}}     -    {{request.user.id}}</strong></p>
+                {% for category in categories %}
+                 <div class="card">
+                    <div class="card-header">
+                        Categorias
+                       
+                              <ul class="list-group list-group-flush">
+                    <!--p style="color:red">{{category}}</p>
+                    <p style="color:orange">{{category.id}}</p>
+                    <p style="color:purple">{{category.user_id}}</p-->
+
+                      
+                        <li class=" list-group-item">
+                            <div class="card-header">
+                            {{category.category_name|upper}}
+                            </div>
+                                    {% if category.category_name == "Pessoa"%}
+                                        {{category.category_name| upper}}
+                                        {{images.category_name}}
+                                        {% for photo in image_objeto %}
+                            <p style="color:green">{{photo.category_name}}-{{photo.id}}</p>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-3"style='border:3px solid red;'>
+                                                <div class="card my-3">
+                                                    <img class="image-thumbail"
+                                                    src="{{photo.image.url}}" alt="Imagem Cadastrada">
+                        
+                                                    <div class="card-body">
+                                                        <small>Categoria: {{photo.category_name}}-{{photo.category_name_id}}-  {{photomodel.id}}
+                                                            {{photo.image.url}}
+                                                            {{photo.description}}
+                                                            {{photo.category_name_id}}</small>
+                                                    </div>
+                                                    <a href="#" class="btn btn-outline-dark btn-sm m-1">View</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>  
+                                        {% endfor %}
+                                    {% else %}
+                                        <small>Você ainda não adicionou Fotos para Jogar ... </small>
+                                    {% endif %}
+                        </li>
+                    </div>
+                                        <a href="{% url 'minhagaleria:add_photogames' user.id %}" 
+                                        class="btn btn-primary btn-block btn-sm m-1">Adicionar Foto Pessoa</a>
+                                        {% if category.category_name == "Evento"%}
+                                        {% if photo.category_name == "Evento"%}
+                                        <p style="color:green">{{category.category_name}}</p>
+                                        <div class="col-md-4"style='border:3px solid red;'>
+                                            <div class="card my-2">
+                                                <img class="image-thumbail"
+                                                src="{{photo.image.url}}" alt="Imagem Cadastrada">
+                    
+                                                <div class="card-body">
+                                                    <small>Categoria: {{photo.category_name}}-{{photo.category_name_id}}-  {{photomodel.id}}
+                                                        {{photo.image.url}}
+                                                        {{photo.description}}
+                                                        {{photo.category_name_id}}</small>
+                                                </div>
+                                                <a href="#" class="btn btn-outline-dark btn-sm m-1">View</a>
+                                            </div>
+                                        </div>
+                                        {% else %}
+                                        <small>Você ainda não adicionou Fotos para Jogar ... </small>
+                                        {% endif %}
+                                    {% endif %}    
+                                  
+                                    <p style="color:red">{{category.category_name}}</p>
+                                    <a href="{% url 'minhagaleria:add_photogames' user.id %}" 
+                                    class="btn btn-primary btn-block btn-sm m-1">Adicionar Foto Evento</a>
+                                    
+                                    {% if category.category_name == "Objeto"%}
+                                        {% if photo.category_name == "Objeto"%}
+                                                                      
+                                        <p style="color:green">{{category.category_name}}</p>
+                                        <div class="col-md-4"style='border:3px solid red;'>
+                                            <div class="card my-2">
+                                                <img class="image-thumbail"
+                                                src="{{photo.image.url}}" alt="Imagem Cadastrada">
+                    
+                                                <div class="card-body">
+                                                    <small>Categoria: {{photo.category_name}}-{{photo.category_name_id}}-  {{photomodel.id}}
+                                                        {{photo.image.url}}
+                                                        {{photo.description}}
+                                                        {{photo.category_name_id}}</small>
+                                                </div>
+                                                <a href="#" class="btn btn-outline-dark btn-sm m-1">View</a>
+                                            </div>
+                                        </div>
+                                        {% else %}
+                                        <small>Você ainda não adicionou Fotos para Jogar ... </small>
+                                        {% endif %}
+                                    {% endif %}
+                                    <p style="color:Blue">{{category.category_name}}</p>
+                                    <a href="{% url 'minhagaleria:add_photogames' user.id %}" 
+                                    class="btn btn-primary btn-block btn-sm m-1">Adicionar Foto Objeto</a>
+                                    {% if category.category_name == "Lugar"%}
+                                        {% if photo.category_name == "Lugar"%}
+
+                                        <p style="color:purple">{{category.category_name}}</p>
+                                        <a href="{% url 'minhagaleria:add_photogames' user.id %}" 
+                                        class="btn btn-primary btn-block btn-sm m-1">Adicionar Foto</a>
+                                        {% endif %}
+                                    {% endif %}
+                                </a>
+                            </li>
+                            
+                        {% endfor %}
+                     </ul>
+                </div>
+                {% endif %}
+
+            </div>
+            <div class="col-md-9">
+                <div class="row">
+
+                    {% for photo in images %}
+                  
+                    <div class="col-md-4"style='border:3px solid red;'>
+                        <div class="card my-2">
+                            <img class="image-thumbail"
+                             src="{{photo.image.url}}" alt="Imagem Cadastrada">
+
+                            <div class="card-body">
+                                <small>Categoria: {{photo.category_name}}-{{photo.category_name_id}}-  {{photomodel.id}}
+                                    {{photo.image.url}}
+                                    {{photo.description}}
+                                    {{photo.category_name_id}}</small>
+                            </div>
+                            <a href="#" class="btn btn-outline-dark btn-sm m-1">View</a>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <h3>Você ainda não adicionou Fotos para Jogar ... </h3>
+                    {% endfor %}
+
+
+
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

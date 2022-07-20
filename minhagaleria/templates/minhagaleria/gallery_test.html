@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery Test</title>
+
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+</head>
+
+<body class="m-sm-5">
+{% if request.user.id is user.id %}
+    <div class="card" style="border:5px solid red">
+        <div class="card-header "style='color:white;background-color: darkblue'>
+            <h2><strong>Aqui você verifica Suas Fotos Cadastradas ... -
+                {{request.user.id}} - {{user.id}}-{{user.username}}</strong></h2></div>
+      
+<!----------------------------------------------------------------------->
+<h3 style='color:black'> Categoria Pessoa</h3>   
+<hr style='color:black'> 
+    {% if image_person %}
+            <div class="row">
+            {% for pic in image_person %}
+                  
+                <div class='col-3 list-group-flush'style='border:3px solid purple'>
+                    <div class="card " style="border:3px solid green;width: 18 rem;">
+                        <img src="{{pic.image.url}}" class="card-img-top" alt="Imagem Objeto"style='border:2px solid black;'>
+                        <div class="card-body">
+                            <h5 class="card-title"> {{categories.0| upper}}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">{{categories.0| upper}}</h6>
+                                
+                            <p class="card-text">{{pic.image.url}}-{{pic.category_name}}-{{pic.description}}</p>
+                            <a href="#" class="card-link">{{ pic.description }}</a>
+                            <a href="#" class="card-link">Another link</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %} 
+            </div>
+     {% else %}
+        <p>Você ainda não cadastrou uma Foto nessa Categoria...</p>
+    {% endif %}
+    <hr style='color:black'>
+<!------------------------------------------------------------------------------------->
+<!----------------------------------------------------------------------->
+<h3 style='color:black'> Categoria Evento</h3>   
+<hr style='color:black'> 
+    {% if image_venue %}
+            <div class="row">
+            {% for pic in image_venue %}
+              
+                  
+                <div class='col-3 list-group-flush'style='border:3px solid purple'>
+                    <div class="card " style="border:3px solid green;width: 18 rem;">
+                        <img src="{{pic.image.url}}" class="card-img-top" alt="Imagem Objeto"style='border:2px solid black;'>
+                        <div class="card-body">
+                            <h5 class="card-title"> {{categories.1| upper}}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">{{categories.1| upper}}</h6>
+                                
+                            <p class="card-text">{{pic.image.url}}-{{pic.category_name}}-{{pic.description}}</p>
+                            <a href="#" class="card-link">{{ pic.description }}</a>
+                            <a href="#" class="card-link">Another link</a>
+                            <strong>  {{pic.id}} </strong>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %} 
+            </div>
+     {% else %}
+        <p>Você ainda não cadastrou uma Foto nessa Categoria...</p>
+    {% endif %}
+    <hr style='color:black'>
+<!------------------------------------------------------------------------------------->
+
+<!----------------------------------------------------------------------->
+        <h3 style='color:black'> Categoria Objeto</h3>   
+        <hr style='color:black'> 
+            {% if image_object %}
+                <p style="color:black">{{teste_all}}-{{teste_object}}</p>
+                    <div class="row">
+                    {% for pic in image_object %}
+                          
+                        <div class='col-3 list-group-flush'style='border:3px solid purple'>
+                            <div class="card " style="border:3px solid green;width: 18 rem;">
+                                <img src="{{pic.image.url}}" class="card-img-top" alt="Imagem Objeto"style='border:2px solid black;'>
+                                <div class="card-body">
+                                    <h5 class="card-title"> {{categories.2| upper}}</h5>
+                                    <h6 class="card-subtitle mb-2 text-muted">{{categories.2| upper}}</h6>
+                                        
+                                    <p class="card-text">{{pic.image.url}}-{{pic.category_name}}-{{pic.description}}</p>
+                                    <a href="#" class="card-link">{{ pic.description }}</a>
+                                    <a href="#" class="card-link">Another link</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %} 
+                    </div>
+             {% else %}
+                <p>Você ainda não cadastrou uma Foto nessa Categoria...</p>
+            {% endif %}
+            <hr style='color:black'>
+<!------------------------------------------------------------------------------------->
+<!----------------------------------------------------------------------->
+<h3 style='color:black'> Categoria Lugar</h3>   
+<hr style='color:black'> 
+
+    {% if image_all %}
+                    {{teste_all}}-{{teste_location}}{{categories}}
+     
+            <div class="row"style='border:3px solid blue'>
+            {% for pic in image_location %}
+                {{pic}}
+                  
+                <div class='col-3 list-group-flush'style='border:3px solid purple'>
+                    <div class="card " style="border:3px solid green;width: 18 rem;">
+                        <img src="{{pic.image.url}}" class="card-img-top" alt="Imagem Objeto"style='border:2px solid black;'>
+                        <div class="card-body">
+                            <h5 class="card-title"> {{categories.3| upper}}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">{{categories.3| upper}}</h6>
+                                
+                            <p class="card-text">{{pic.image.url}}-{{pic.category_name}}-{{pic.description}}</p>
+                            <a href="#" class="card-link">{{ pic.description }}</a>
+                            <a href="#" class="card-link">Another link</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %} 
+            </div>
+     {% else %}
+        <p>Você ainda não cadastrou uma Foto nessa Categoria...</p>
+    {% endif %}
+    <hr style='color:black'>
+<!------------------------------------------------------------------------------------->
+
+
+
+        
+        
+        
+    </div>
+{% endif %}
+</body>
+</html>

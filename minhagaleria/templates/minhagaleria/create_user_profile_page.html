@@ -1,0 +1,24 @@
+
+{% block title %}Criar Seu Perfil{% endblock%}
+{% block content %}
+
+    <h1> Criar Perfil</h1>
+    <a href="{% url 'minhagaleria:home'%}">Home</a>
+
+    <hr>
+    {% if user.is_authenticated %}
+        
+                <div class="form-group">
+                    <form method = "POST" enctype="multipart/form-data">  
+                            {% csrf_token %}
+                            
+                            {{form.as_p}}
+    
+                            <button class="btn btn-secondary">Criar Seu Perfil</button>
+                </div>
+                
+    {% else %}
+    <h3><a href="{% url 'minhagaleria:register' %}">Faça Primeiro Seu Cadastro!</a></h3>
+    {% endif %}    
+  
+{% endblock %}

@@ -1,0 +1,50 @@
+<h1>Home</h1>
+
+
+<h2>User variables</h2>
+<p>{{user.id}}</p>
+<p >{{user.username}}</p>
+<p>{{user.last_login}}</p>
+<p>{{user.date_joined}}</p>
+<p>{{user.is_active}}</p>
+
+<hr>
+
+<h2>ProfileModel Variables</h2>
+<p style="color: red;">{{user.profilemodel.id}}</p>
+<p style="color: red;">{{user.profilemodel.user_name}}</p>
+<p style="color: red;">{{user.profilemodel.data_nascimento}}</p>
+<p style="color: red;">{{user.profilemodel.foto.url}}</p>
+<p style="color: red;">{{user.profilemodel.user_id}}</p>
+
+
+<hr>
+
+<h2>Category Model Variables are Local....</h2>
+<p style="color:purple">{{category.user_id}}</p>
+<p style="color:green;">{{categorymodel.user_id}}</p>
+<p style="color: green;">{{categorymodel.category_name.user_id}}</p>
+<p style="color: green;">{{page_user.id}}</p>
+
+
+<hr>
+<h2>request.user Variables- herdam de USER </h2>
+<p style="color: purple;">{{request.user}}</p>
+<p style="color: purple;">{{request.user.id}}</p>
+<p style="color: purple;">{{request.user.username}}</p>
+<p style="color: purple;">{{request.user.last_login}}</p>
+{{photomodel.category_name_id}}
+{{categorymodel.category_name}}
+
+
+
+<hr>
+<a href="{% url 'minhagaleria:create_user_profile_page' user.id %}">Perfil</a>
+<a href="{% url 'minhagaleria:show_user_profile_page' user.id %}"> Seu Perfil</a>
+<a href="{% url 'minhagaleria:gallery' user.id  %}">Galeria</a>
+<a href="{% url 'minhagaleria:gallery_test' %}">Galeria Teste layout</a>
+<a href="{% url 'minhagaleria:login' %}">Login</a>
+<a href="{% url 'minhagaleria:register' %}">Cadastro</a>
+<a href="{% url 'minhagaleria:photo'  %}">Detalhes Foto</a>
+<a href="{% url 'minhagaleria:add_photogames' user.id %}">Adicionar Foto</a>
+

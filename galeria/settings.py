@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+  
     'minhagaleria.apps.MinhagaleriaConfig',
     'django.contrib.admin',
     'django.contrib.auth',
